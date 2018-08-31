@@ -2,7 +2,7 @@
 
 ## electron + vue2 + scss
 
-'''
+```
 // webpack dev server
 $npm run dev
 
@@ -11,4 +11,4 @@ $npm run build
 
 // electron start
 $npm start
-'''
+```
