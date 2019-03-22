@@ -11,4 +11,7 @@ $npm run build
 
 // electron start
 $npm start
+
+// electron build
+$npm run build:win64
 ```

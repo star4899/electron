@@ -5,15 +5,15 @@ const url = require("url");
 let win;
 function createWindow(){
     win = new BrowserWindow({
-        width : 1040,
-        height : 726,
+        width : 1080,
+        height : 740,
         icon : __dirname + "/src/images/icon.png"
     });
     win.loadURL(url.format({
-        pathname : path.join(__dirname, "/dist/index.html"),
+        pathname : path.join(__dirname, "/index.html"),
         protocol : "file:",
         slashes : true
-    }));
+	}));
 
     win.webContents.openDevTools();
 

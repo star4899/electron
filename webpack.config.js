@@ -11,7 +11,7 @@ module.exports = {
 		pos : "./src/index.js"
 	},
 	output : {
-		path : path.resolve(__dirname + "/dist/js")
+		path : path.resolve(__dirname)
 	},
 	module : {
 		rules : [
@@ -51,11 +51,11 @@ module.exports = {
 		new VueLoaderPlugin(),
 		new webpack.HotModuleReplacementPlugin(),
 		new HtmlWebpackPlugin({
-			template: "index.html",
-			filename: "../index.html",
+			template: "./src/index.html",
+			filename: "index.html",
 			inject: true
 		}),
-		new ExtractTextPlugin("../css/pos.css")
+		new ExtractTextPlugin("pos.css")
 	],
 	resolve: {
 		alias: {

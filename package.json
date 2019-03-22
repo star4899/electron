@@ -14,6 +14,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "css-loader": "^1.0.0",
     "electron": "^2.0.8",
+    "electron-builder": "^20.39.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.9.3",
@@ -31,9 +32,53 @@
   },
   "scripts": {
     "dev": "webpack-dev-server --mode development --open",
-    "build": "webpack --mode production --progress --hide-modules",
-    "start": "electron ."
+    "build": "rimraf index.html && rimraf pos.css && rimraf pos.js && webpack --mode production --progress --hide-modules",
+	"start": "npm run build && electron .",
+	"build:win64": "npm run build && rimraf install && webpack --mode production --progress --hide-modules && build --win --x64"
   },
   "author": "skydown",
-  "license": "ISC"
+  "license": "ISC",
+
+
+  "build": {
+    "productName": "VuePos",
+    "appId": "com.electron.VuePos",
+    "asar": true,
+    "protocols" : {
+        "name" : "VuePos",
+        "schemes" : ["VuePos"]
+    },
+    "mac": {
+      "target": [
+        "default"
+      ]
+    },
+    "dmg": {
+      "title": "VuePos"
+    },
+    "win": {
+      "target": [
+        "zip",
+        "nsis"
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage", 
+        "deb",
+        "rpm",
+        "zip",
+        "tar.gz"
+      ]
+    },
+    "nsis":{
+      "oneClick" : false,
+      "allowToChangeInstallationDirectory" :true
+    },
+    "directories": {
+      "buildResources": "dist/",
+      "output": "install/",
+      "app": "."
+    }
+  }
 }
